@@ -1,4 +1,4 @@
-dep,reg,cheflieu,tncc,ncc,nccenr,libelle
+DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE
 01,84,01053,5,AIN,Ain,Ain
 02,32,02408,5,AISNE,Aisne,Aisne
 03,84,03190,5,ALLIER,Allier,Allier
@@ -48,7 +48,7 @@ dep,reg,cheflieu,tncc,ncc,nccenr,libelle
 46,76,46042,2,LOT,Lot,Lot
 47,75,47001,2,LOT ET GARONNE,Lot-et-Garonne,Lot-et-Garonne
 48,76,48095,3,LOZERE,Lozère,Lozère
-49,52,49007,2,MAINE ET LOIRE,Maine-et-Loire,Maine-et-Loire
+49,52,49007,0,MAINE ET LOIRE,Maine-et-Loire,Maine-et-Loire
 50,28,50502,3,MANCHE,Manche,Manche
 51,44,51108,3,MARNE,Marne,Marne
 52,44,52121,3,HAUTE MARNE,Haute-Marne,Haute-Marne

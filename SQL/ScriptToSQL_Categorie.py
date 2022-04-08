@@ -1,18 +1,17 @@
 ## Ce script sert à récupérer les données csv pour les transformer en sql. On en aura plus besoin une fois tout transformé
 
 #Lecture et mise en forme fichier csv
-def LectureFichier(fichier):
+def LectureFichier(fichier,separateur):
     with open(str(fichier),'r') as fichiercsv:
         lignes = fichiercsv.readlines()
         ligneslist = []
         for ligne in lignes:
-            ligneslist.append(ligne.replace('\n','').replace("'",'_').split(';'))  #Supprime les \n inutiles, les ' qui sont problématiques en sql, et met sous forme de liste les lignes
+            ligneslist.append(ligne.replace('\n','').replace("'",'_').split(separateur))  #Supprime les \n inutiles, les ' qui sont problématiques en sql, et met sous forme de liste les lignes
         ligneslist = ligneslist[1:] #Supprime la première ligne inutile
         # => On a grande liste (lignes) contient petites listes (colonnes)
     for i in ligneslist:
         print(i)
     return ligneslist
-
 def EcritureSQLLigne(table,attributs): #Les attributs sont sous forme de liste
     resultat = 'INSERT INTO ' + table + ' ('
     for attribut in attributs:
@@ -28,7 +27,7 @@ def EcritureCategorie():
 
     ListDejaFait = []   #On met dans cette liste toutes les catégories déjà faites pour ne pas avoir de doublons (avec des not in cette liste)
     ListDejaFaitS = []
-    ligneslist = LectureFichier('BPE20_table_passage.csv')
+    ligneslist = LectureFichier('BPE20_table_passage.csv',';')
     for ligne in ligneslist:
         if ligne[-1] not in ListDejaFait :
             ListDejaFait.append(ligne[-1])
@@ -46,15 +45,21 @@ def EcritureCategorie():
         fichiersql.write(ResultCat[:-2] + '; \n\n' + ResultSCat[:-2] + ';\n\n' + ResultType[:-2] + ';\n\n')
 
 
-
-
-
 def Commune():
-    RecultRegion = EcritureSQLLigne('Region',['CodeRegion','LibRegion'])
+    ResultRegion = EcritureSQLLigne('Region',['CodeRegion','LibRegion'])
     ResultDep = EcritureSQLLigne('Departement',['CodeDepartement','LibDepartement','CodeRegion'])
     ResultCommune = EcritureSQLLigne('Commune',['CodeCommune','LibCommune','CodeDepartement'])
-    
-    LRegion = []
-    LDep = []
-    ligneslist = LectureFichier('')
-    for ligne in ligneslist:()
+    sep = ','
+    ligneslistRegion = LectureFichier('region_2022.csv',sep)
+    ligneslistDep = LectureFichier('departement_2022.csv',sep)
+    ligneslistCommune = LectureFichier('commune_2022.csv',sep)
+    for ligne in ligneslistRegion:
+        ResultRegion += "\t( " + str(ligne[0]) +"'"+ligne[-1]+"' ), \n"
+    for ligne in ligneslistDep:
+        ResultDep += "\t( " + str(ligne[0]) + "'"+ligne[-1]+"'"+str(ligne[1]) + ' ), \n'
+    for ligne in ligneslistCommune:
+        ResultCommune += "\t( " + str(ligne[1]) + "'"+ligne[-3] +"'" + str(ligne[3]) + ' ), \n'
+    with open('CommuneDepRegion.sql','w') as fichiersql:
+        fichiersql.write(ResultRegion[:-2] + ';\n\n' + ResultDep[:-2] + ';\n\n' + ResultCommune[:-2] + ';\n\n')
+
+Commune()
