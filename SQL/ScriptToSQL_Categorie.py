@@ -62,5 +62,3 @@ def Commune():
         ResultCommune += "\t( " + str(ligne[1]) + " , '"+ligne[-3] +"' , " + str(ligne[3]) + ' ), \n'
     with open('CommuneDepRegion.sql','w') as fichiersql:
         fichiersql.write(ResultRegion[:-2] + ';\n\n' + ResultDep[:-2] + ';\n\n' + ResultCommune[:-2] + ';\n\n')
-
-Commune()
