@@ -2,7 +2,7 @@
 
 #Lecture et mise en forme fichier csv
 def LectureFichier(fichier,separateur):
-    with open(str(fichier),'r') as fichiercsv:
+    with open(fichier,'r') as fichiercsv:
         lignes = fichiercsv.readlines()
         ligneslist = []
         for ligne in lignes:
@@ -27,7 +27,7 @@ def EcritureCategorie():
 
     ListDejaFait = []   #On met dans cette liste toutes les catégories déjà faites pour ne pas avoir de doublons (avec des not in cette liste)
     ListDejaFaitS = []
-    ligneslist = LectureFichier('BPE20_table_passage.csv',';')
+    ligneslist = LectureFichier('SQL\BPE20_table_passage.csv',';')
     for ligne in ligneslist:
         if ligne[-1] not in ListDejaFait :
             ListDejaFait.append(ligne[-1])
@@ -50,15 +50,16 @@ def Commune():
     ResultDep = EcritureSQLLigne('Departement',['CodeDepartement','LibDepartement','CodeRegion'])
     ResultCommune = EcritureSQLLigne('Commune',['CodeCommune','LibCommune','CodeDepartement'])
     sep = ','
-    ligneslistRegion = LectureFichier('region_2022.csv',sep)
-    ligneslistDep = LectureFichier('departement_2022.csv',sep)
-    ligneslistCommune = LectureFichier('commune_2022.csv',sep)
+    ligneslistRegion = LectureFichier(r'SQL\region_2022.csv',sep)
+                                       
+    ligneslistDep = LectureFichier('SQL\departement_2022.csv',sep)
+    ligneslistCommune = LectureFichier('SQL\commune_2022.csv',sep)
     for ligne in ligneslistRegion:
-        ResultRegion += "\t( " + str(ligne[0]) +"'"+ligne[-1]+"' ), \n"
+        ResultRegion += "\t( " + str(ligne[0]) +" , '"+ligne[-1]+"' ), \n"
     for ligne in ligneslistDep:
-        ResultDep += "\t( " + str(ligne[0]) + "'"+ligne[-1]+"'"+str(ligne[1]) + ' ), \n'
+        ResultDep += "\t( " + str(ligne[0]) + " , '"+ligne[-1]+"' , "+str(ligne[1]) + ' ), \n'
     for ligne in ligneslistCommune:
-        ResultCommune += "\t( " + str(ligne[1]) + "'"+ligne[-3] +"'" + str(ligne[3]) + ' ), \n'
+        ResultCommune += "\t( " + str(ligne[1]) + " , '"+ligne[-3] +"' , " + str(ligne[3]) + ' ), \n'
     with open('CommuneDepRegion.sql','w') as fichiersql:
         fichiersql.write(ResultRegion[:-2] + ';\n\n' + ResultDep[:-2] + ';\n\n' + ResultCommune[:-2] + ';\n\n')
 
