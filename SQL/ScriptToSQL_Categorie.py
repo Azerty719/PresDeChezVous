@@ -49,7 +49,12 @@ def EcritureCategorie():
 
 
 
-
-
-def EcritureEquipement():
-    return
+def Commune():
+    RecultRegion = EcritureSQLLigne('Region',['CodeRegion','LibRegion'])
+    ResultDep = EcritureSQLLigne('Departement',['CodeDepartement','LibDepartement','CodeRegion'])
+    ResultCommune = EcritureSQLLigne('Commune',['CodeCommune','LibCommune','CodeDepartement'])
+    
+    LRegion = []
+    LDep = []
+    ligneslist = LectureFichier('')
+    for ligne in ligneslist:()
