@@ -62,14 +62,11 @@ def Commune():
     ligneslistCommune = LectureFichier('SQL\commune_2022.csv',sep)
     
     for ligne in ligneslistRegion:
-        ligne = corse(ligne)
         ResultRegion += "\t( " + str(ligne[0]) +" , '"+ligne[-1]+"' ), \n"
     for ligne in ligneslistDep:
-        ligne = corse(ligne)
         ResultDep += "\t( " + str(ligne[0]) + " , '"+ligne[-1]+"' , "+str(ligne[1]) + ' ), \n'
     for ligne in ligneslistCommune:
-        ligne = corse(ligne)
         if ligne[-1] == '':                         #Si pas égal alors c'est une ancienne ville qui a fusionné => même clé primaire que la commune fusion donc on enlève 
             ResultCommune += "\t( " + str(ligne[1]) + " , '"+ligne[-3] +"' , " + str(ligne[3]) + ' ), \n'
-    with open('CommuneDepRegion.sql','w') as fichiersql:
-        fichiersql.write(ResultRegion[:-2] + ';\n\n' + ResultDep[:-2] + ';\n\n' + ResultCommune[:-2] + ';\n\n')
+    with open(r'SQL\CommuneDepRegion.sql','w') as fichiersql:
+        fichiersql.write(ResultRegion[:-3] + ';\n\n' + ResultDep[:-3] + ';\n\n' + ResultCommune[:-3] + ';\n\n')

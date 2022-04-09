@@ -17,7 +17,7 @@ INSERT INTO Region (CodeRegion,LibRegion)
 	( 76 , 'Occitanie' ), 
 	( 84 , 'Auvergne-Rhône-Alpes' ), 
 	( 93 , 'Provence-Alpes-Côte d_Azur' ), 
-	( 94 , 'Corse' ),;
+	( 94 , 'Corse' );
 
 INSERT INTO Departement (CodeDepartement,LibDepartement,CodeRegion) 
  VALUES 
@@ -121,7 +121,7 @@ INSERT INTO Departement (CodeDepartement,LibDepartement,CodeRegion)
 	( 972 , 'Martinique' , 02 ), 
 	( 973 , 'Guyane' , 03 ), 
 	( 974 , 'La Réunion' , 04 ), 
-	( 976 , 'Mayotte' , 06 ),;
+	( 976 , 'Mayotte' , 06 );
 
 INSERT INTO Commune (CodeCommune,LibCommune,CodeDepartement) 
  VALUES 
@@ -35079,5 +35079,5 @@ INSERT INTO Commune (CodeCommune,LibCommune,CodeDepartement)
 	( 97614 , 'Ouangani' , 976 ), 
 	( 97615 , 'Pamandzi' , 976 ), 
 	( 97616 , 'Sada' , 976 ), 
-	( 97617 , 'Tsingoni' , 976 ),;
+	( 97617 , 'Tsingoni' , 976 );
 
