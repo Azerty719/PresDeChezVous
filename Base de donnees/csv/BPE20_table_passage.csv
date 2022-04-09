@@ -1,0 +1,189 @@
+﻿TYPEQU;LIB_EQUIP;SDOM;LIB_SDOM;DOM;LIB_DOM
+A101;Police;A1;Services publics;A;Services aux particuliers
+A104;Gendarmerie;A1;Services publics;A;Services aux particuliers
+A105;Cour d'appel;A1;Services publics;A;Services aux particuliers
+A106;Tribunal de grande instance (TGI);A1;Services publics;A;Services aux particuliers
+A107;Tribunal d'instance (TI);A1;Services publics;A;Services aux particuliers
+A108;Conseil de prud'hommes (CPH);A1;Services publics;A;Services aux particuliers
+A109;Tribunal de commerce (TCO);A1;Services publics;A;Services aux particuliers
+A120;DRFIP;A1;Services publics;A;Services aux particuliers
+A121;DDFIP;A1;Services publics;A;Services aux particuliers
+A122;Réseau de proximité Pôle Emploi;A1;Services publics;A;Services aux particuliers
+A123;Réseau partenarial Pôle Emploi;A1;Services publics;A;Services aux particuliers
+A124;Maison de Justice et du Droit (MJD);A1;Services publics;A;Services aux particuliers
+A125;Antenne de Justice (AJ);A1;Services publics;A;Services aux particuliers
+A126;Conseil départemental d'accés au droit (CDAD);A1;Services publics;A;Services aux particuliers
+A127;Maisons de services au public ou Implantations France Services;A1;Services publics;A;Services aux particuliers
+A203;Banque Caisse d'épargne;A2;Services généraux;A;Services aux particuliers
+A205;Services funéraires;A2;Services généraux;A;Services aux particuliers
+A206;Bureau de poste;A2;Services généraux;A;Services aux particuliers
+A207;Relais poste;A2;Services généraux;A;Services aux particuliers
+A208;Agence postale;A2;Services généraux;A;Services aux particuliers
+A301;Réparation auto-matériel agricole;A3;Services automobiles;A;Services aux particuliers
+A302;Contrôle technique automobile;A3;Services automobiles;A;Services aux particuliers
+A303;Location auto-utilitaires légers;A3;Services automobiles;A;Services aux particuliers
+A304;Ecoles de conduite;A3;Services automobiles;A;Services aux particuliers
+A401;Maçon;A4;Artisanat du bâtiment;A;Services aux particuliers
+A402;Platrier peintre;A4;Artisanat du bâtiment;A;Services aux particuliers
+A403;Menuisier charpentier serrurier;A4;Artisanat du bâtiment;A;Services aux particuliers
+A404;Plombier couvreur chauffagiste;A4;Artisanat du bâtiment;A;Services aux particuliers
+A405;Electricien;A4;Artisanat du bâtiment;A;Services aux particuliers
+A406;Entreprise générale bâtiment;A4;Artisanat du bâtiment;A;Services aux particuliers
+A501;Coiffure;A5;Autres services à la population;A;Services aux particuliers
+A502;Vétérinaire;A5;Autres services à la population;A;Services aux particuliers
+A503;Agence travail temporaire;A5;Autres services à la population;A;Services aux particuliers
+A504;Restaurant - Restauration rapide;A5;Autres services à la population;A;Services aux particuliers
+A505;Agence immobilière;A5;Autres services à la population;A;Services aux particuliers
+A506;Pressing-Laverie automatique;A5;Autres services à la population;A;Services aux particuliers
+A507;Institut de beauté-Onglerie;A5;Autres services à la population;A;Services aux particuliers
+B101;Hypermarché;B1;Grandes surfaces;B;Commerces
+B102;Supermarché;B1;Grandes surfaces;B;Commerces
+B103;Grande surface bricolage;B1;Grandes surfaces;B;Commerces
+B201;Supérette;B2;Commerces alimentaires;B;Commerces
+B202;Epicerie;B2;Commerces alimentaires;B;Commerces
+B203;Boulangerie;B2;Commerces alimentaires;B;Commerces
+B204;Boucherie charcuterie;B2;Commerces alimentaires;B;Commerces
+B205;Produits surgelés;B2;Commerces alimentaires;B;Commerces
+B206;Poissonnerie;B2;Commerces alimentaires;B;Commerces
+B301;Librairie papeterie journaux;B3;Commerces spécialisés non alimentaires;B;Commerces
+B302;Magasin vêtements;B3;Commerces spécialisés non alimentaires;B;Commerces
+B303;Magasin équipements du foyer;B3;Commerces spécialisés non alimentaires;B;Commerces
+B304;Magasin chaussures;B3;Commerces spécialisés non alimentaires;B;Commerces
+B305;Magasin électroménager - matériel audio/video;B3;Commerces spécialisés non alimentaires;B;Commerces
+B306;Magasin meubles;B3;Commerces spécialisés non alimentaires;B;Commerces
+B307;Magasin articles de sports - loisirs;B3;Commerces spécialisés non alimentaires;B;Commerces
+B308;Magasin revêtements murs et sols;B3;Commerces spécialisés non alimentaires;B;Commerces
+B309;Droguerie quincaillerie bricolage;B3;Commerces spécialisés non alimentaires;B;Commerces
+B310;Parfumerie-Cosmétique;B3;Commerces spécialisés non alimentaires;B;Commerces
+B311;Horlogerie Bijouterie;B3;Commerces spécialisés non alimentaires;B;Commerces
+B312;Fleuriste-Jardinerie-Animalerie;B3;Commerces spécialisés non alimentaires;B;Commerces
+B313;Magasin d'optique;B3;Commerces spécialisés non alimentaires;B;Commerces
+B315;Magasin de matériel médical et orthopédique;B3;Commerces spécialisés non alimentaires;B;Commerces
+B316;Station service;B3;Commerces spécialisés non alimentaires;B;Commerces
+C101;Ecole maternelle;C1;Enseignement du premier degré;C;Enseignement
+C102;RPI dispersé maternelle;C1;Enseignement du premier degré;C;Enseignement
+C104;Ecole élémentaire;C1;Enseignement du premier degré;C;Enseignement
+C105;RPI dispersé élémentaire;C1;Enseignement du premier degré;C;Enseignement
+C201;Collège;C2;Enseignement du second degré premier cycle;C;Enseignement
+C301;Lycée enseignement général - technologique;C3;Enseignement du second degré second cycle;C;Enseignement
+C302;Lycée enseignement professionnel;C3;Enseignement du second degré second cycle;C;Enseignement
+C303;Lycée enseignement technologique / professionnel agricole;C3;Enseignement du second degré second cycle;C;Enseignement
+C304;SGT Section d'enseignement général et technologique;C3;Enseignement du second degré second cycle;C;Enseignement
+C305;SEP Section d'enseignement professionnel;C3;Enseignement du second degré second cycle;C;Enseignement
+C401;STS CPGE;C4;Enseignement supérieur non universitaire;C;Enseignement
+C402;Formation santé;C4;Enseignement supérieur non universitaire;C;Enseignement
+C403;Formation Commerce;C4;Enseignement supérieur non universitaire;C;Enseignement
+C409;Autre formation post bac non universitaire;C4;Enseignement supérieur non universitaire;C;Enseignement
+C501;UFR;C5;Enseignement supérieur universitaire;C;Enseignement
+C502;Institut universitaire;C5;Enseignement supérieur universitaire;C;Enseignement
+C503;Ecole d'ingénieurs;C5;Enseignement supérieur universitaire;C;Enseignement
+C504;Enseignement général supérieur privé;C5;Enseignement supérieur universitaire;C;Enseignement
+C505;Ecole d'enseignement supérieur agricole;C5;Enseignement supérieur universitaire;C;Enseignement
+C509;Autre enseignement supérieur;C5;Enseignement supérieur universitaire;C;Enseignement
+C601;Centre formation d'apprentis (hors agriculture);C6;Formation continue;C;Enseignement
+C602;GRETA;C6;Formation continue;C;Enseignement
+C603;Centre dispensant de la formation continue agricole;C6;Formation continue;C;Enseignement
+C604;Formation métiers du sport;C6;Formation continue;C;Enseignement
+C605;Centre dispensant des formations d'apprentissage agricole;C6;Formation continue;C;Enseignement
+C609;Autre formation continue;C6;Formation continue;C;Enseignement
+C701;Résidence universitaire;C7;Autres services de l'éducation;C;Enseignement
+C702;Restaurant universitaire;C7;Autres services de l'éducation;C;Enseignement
+D101;Etablissement santé court séjour;D1;Etablissements et services de santé;D;Santé et action sociale
+D102;Etablissement santé moyen séjour;D1;Etablissements et services de santé;D;Santé et action sociale
+D103;Etablissement santé long séjour;D1;Etablissements et services de santé;D;Santé et action sociale
+D104;Etablissement psychiatrique avec hébergement;D1;Etablissements et services de santé;D;Santé et action sociale
+D105;Centre lutte cancer;D1;Etablissements et services de santé;D;Santé et action sociale
+D106;Urgence;D1;Etablissements et services de santé;D;Santé et action sociale
+D107;Maternité;D1;Etablissements et services de santé;D;Santé et action sociale
+D108;Centre de santé;D1;Etablissements et services de santé;D;Santé et action sociale
+D109;Structure psychiatrique en ambulatoire;D1;Etablissements et services de santé;D;Santé et action sociale
+D110;Centre médecine préventive;D1;Etablissements et services de santé;D;Santé et action sociale
+D111;Dialyse;D1;Etablissements et services de santé;D;Santé et action sociale
+D112;Hospitalisation à domicile;D1;Etablissements et services de santé;D;Santé et action sociale
+D113;Maison de santé pluridisciplinaire;D1;Etablissements et services de santé;D;Santé et action sociale
+D201;Médecin généraliste;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D202;Spécialiste Cardiologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D203;Spécialiste Dermatologie Vénéréologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D206;Spécialiste Gastro-entérologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D207;Spécialiste Psychiatrie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D208;Spécialiste Ophtalmologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D209;Spécialiste Oto-rhino-laryngologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D210;Spécialiste Pédiatrie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D211;Spécialiste Pneumologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D212;Spécialiste Radio diagnostic Imagerie médicale;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D213;Spécialiste Stomatologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D214;Spécialiste en gynécologie;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D221;Chirurgien dentiste;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D231;Sage-femme;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D232;Infirmier;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D233;Masseur kinésithérapeute;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D235;Orthophoniste;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D236;Orthoptiste;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D237;Pedicure-podologue;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D238;Audio prothésiste;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D239;Ergothérapeute;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D240;Psychomotricien;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D241;Manipulateur ERM;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D242;Diététicien;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D243;Psychologue;D2;Fonctions médicales et para-médicales (à titre libéral);D;Santé et action sociale
+D302;Laboratoire d'analyses médicales;D3;Autres établissements et services à caractère sanitaire;D;Santé et action sociale
+D303;Ambulance;D3;Autres établissements et services à caractère sanitaire;D;Santé et action sociale
+D304;Transfusion sanguine;D3;Autres établissements et services à caractère sanitaire;D;Santé et action sociale
+D305;Etablissement thermal;D3;Autres établissements et services à caractère sanitaire;D;Santé et action sociale
+D307;Pharmacie;D3;Autres établissements et services à caractère sanitaire;D;Santé et action sociale
+D401;Personnes âgées - hébergement;D4;Action sociale pour personnes âgées;D;Santé et action sociale
+D402;Personnes âgées - soins à domicile;D4;Action sociale pour personnes âgées;D;Santé et action sociale
+D403;Personnes âgées - service d aide;D4;Action sociale pour personnes âgées;D;Santé et action sociale
+D404;Foyer restaurant;D4;Action sociale pour personnes âgées;D;Santé et action sociale
+D502;Crèche;D5;Action sociale pour enfants en bas-âge;D;Santé et action sociale
+D601;Enfants handicapés - hébergement;D6;Action sociale pour handicapés;D;Santé et action sociale
+D602;Enfants handicapés - services à domicile ou ambulatoire;D6;Action sociale pour handicapés;D;Santé et action sociale
+D603;Adultes handicapés - accueil/hébergement;D6;Action sociale pour handicapés;D;Santé et action sociale
+D604;Adultes handicapés - services d'aide;D6;Action sociale pour handicapés;D;Santé et action sociale
+D605;Travail protégé;D6;Action sociale pour handicapés;D;Santé et action sociale
+D606;Adultes handicapés - services de soins à domicile;D6;Action sociale pour handicapés;D;Santé et action sociale
+D701;Aide sociale à l'enfance - hébergement;D7;Autres services d'action sociale;D;Santé et action sociale
+D702;Aide sociale à l'enfance - action éducative;D7;Autres services d'action sociale;D;Santé et action sociale
+D703;Centre d’hébergement et de réinsertion sociale;D7;Autres services d'action sociale;D;Santé et action sociale
+D704;Centre provisoire d'hébergement;D7;Autres services d'action sociale;D;Santé et action sociale
+D705;Centre accueil demandeur d'asile;D7;Autres services d'action sociale;D;Santé et action sociale
+D709;Autre établissement pour adultes et familles en difficulté;D7;Autres services d'action sociale;D;Santé et action sociale
+E101;Taxi-VTC;E1;Infrastructures de transports;E;Transports et déplacements
+E102;Aéroport;E1;Infrastructures de transports;E;Transports et déplacements
+E107;Gare de voyageurs d'intérêt national;E1;Infrastructures de transports;E;Transports et déplacements
+E108;Gare de voyageurs d'intérêt régional;E1;Infrastructures de transports;E;Transports et déplacements
+E109;Gare de voyageurs d'intérêt local;E1;Infrastructures de transports;E;Transports et déplacements
+F101;Bassin de natation;F1;Equipements sportifs;F;Sports, loisirs et culture
+F102;Boulodrome;F1;Equipements sportifs;F;Sports, loisirs et culture
+F103;Tennis;F1;Equipements sportifs;F;Sports, loisirs et culture
+F104;Equipement de cyclisme;F1;Equipements sportifs;F;Sports, loisirs et culture
+F105;Domaine skiable;F1;Equipements sportifs;F;Sports, loisirs et culture
+F106;Centre équestre;F1;Equipements sportifs;F;Sports, loisirs et culture
+F107;Athlétisme;F1;Equipements sportifs;F;Sports, loisirs et culture
+F108;Terrain de golf;F1;Equipements sportifs;F;Sports, loisirs et culture
+F109;Parcours sportif/santé;F1;Equipements sportifs;F;Sports, loisirs et culture
+F110;Sports de glace;F1;Equipements sportifs;F;Sports, loisirs et culture
+F111;Plateaux et terrains de jeux extérieurs;F1;Equipements sportifs;F;Sports, loisirs et culture
+F112;Salles spécialisées;F1;Equipements sportifs;F;Sports, loisirs et culture
+F113;Terrains de grands jeux;F1;Equipements sportifs;F;Sports, loisirs et culture
+F114;Salles de combat;F1;Equipements sportifs;F;Sports, loisirs et culture
+F116;Salles non spécialisées;F1;Equipements sportifs;F;Sports, loisirs et culture
+F117;Roller-Skate-Vélo bicross ou freestyle;F1;Equipements sportifs;F;Sports, loisirs et culture
+F118;Sports nautiques;F1;Equipements sportifs;F;Sports, loisirs et culture
+F119;Bowling;F1;Equipements sportifs;F;Sports, loisirs et culture
+F120;Salles de remise en forme;F1;Equipements sportifs;F;Sports, loisirs et culture
+F121;Salles multisports (gymnases);F1;Equipements sportifs;F;Sports, loisirs et culture
+F201;Baignade aménagée;F2;Equipements de loisirs;F;Sports, loisirs et culture
+F202;Port de plaisance - Mouillage;F2;Equipements de loisirs;F;Sports, loisirs et culture
+F203;Boucle de randonnée;F2;Equipements de loisirs;F;Sports, loisirs et culture
+F303;Cinéma;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+F305;Conservatoire;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+F306;Théâtre-Arts de rue-Pôle cirque;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+F307;Bibliothèque;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+F308;Musique et danse;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+F309;Lieu d'exposition et patrimoine;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+F310;Jardin remarquable;F3;Equipements culturels et socioculturels;F;Sports, loisirs et culture
+G101;Agence de voyages;G1;Tourisme;G;Tourisme
+G102;Hôtel;G1;Tourisme;G;Tourisme
+G103;Camping;G1;Tourisme;G;Tourisme
+G104;Information touristique;G1;Tourisme;G;Tourisme

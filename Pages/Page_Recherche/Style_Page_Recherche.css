@@ -1,0 +1,93 @@
+/*CSS pour Page recherche*/
+
+
+/* !CASE DE RESULTAT */
+
+.caseResultat {
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 10px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.233);
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  border-radius: 5px; /* ?Arrondi les bords */
+  height: 100px;
+}
+.case1 {
+  border-color: orangered;
+}
+.case2 {
+  border-color: blue;
+}
+
+.ligne1 {
+  display: flex;
+}
+.ligne1 div {
+  align-self: center;
+}
+
+.typeEquipement {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.ligne1 .distance {
+  text-decoration: none;
+  margin: 0;
+  margin-left: 0.5em;
+  color: blue;
+  align-self: center;
+}
+.position {
+  margin-top: 0.5em;
+}
+.position a {
+  color: blueviolet;
+}
+.etat {
+  margin-top: 1em;
+  display: flex;
+}
+.etat div {
+  vertical-align: middle;
+}
+.cantine {
+  padding-right: 0.5em;
+}
+.secteur {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-left: 1px solid;
+}
+.RP {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-left: 1px solid;
+}
+.RP sup a {
+  text-decoration: none;
+}
+.RP sup a:hover {
+  text-decoration: underline;
+}
+
+.caseResultat .imageType {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.positionForm form {
+  display: flex;
+  margin-top: 1em;
+}
+
+#adresse {
+  width: 200px;
+}
