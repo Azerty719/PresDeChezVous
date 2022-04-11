@@ -99,7 +99,8 @@ CREATE TABLE SousCategorie(
 CREATE TABLE Type(
         IdType          Int  Auto_increment  NOT NULL ,
         LibType       Varchar (256) NOT NULL ,
-        IdSousCategorie Int NOT NULL
+        IdSousCategorie Int NOT NULL ,
+        CodeType Char (4) NOT NULL 
 	,CONSTRAINT Type_PK PRIMARY KEY (IdType)
 
 	,CONSTRAINT Type_SousCategorie_FK FOREIGN KEY (IdSousCategorie) REFERENCES SousCategorie(IdSousCategorie)

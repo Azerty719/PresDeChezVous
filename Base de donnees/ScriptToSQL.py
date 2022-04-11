@@ -24,7 +24,7 @@ def EcritureSQLLigne(table,attributs): #Les attributs sont sous forme de liste
 def EcritureCategorie():
     ResultCat = EcritureSQLLigne('Categorie',['LibCategorie'])
     ResultSCat = EcritureSQLLigne('SousCategorie',['LibSousCategorie','IdCategorie'])
-    ResultType = EcritureSQLLigne('Type',['LibType','IdSousCategorie'])
+    ResultType = EcritureSQLLigne('Type',['LibType','IdSousCategorie','CodeType'])
 
     ListDejaFait = []   #On met dans cette liste toutes les catégories déjà faites pour ne pas avoir de doublons (avec des not in cette liste)
     ListDejaFaitS = []
@@ -40,7 +40,7 @@ def EcritureCategorie():
             ResultSCat += "\t( \'" + ligne[3] + "\' , (SELECT IdCategorie FROM Categorie WHERE LibCategorie=\'" +ligne[-1]+"\') ),\n"
                 #3ème colonne = SousCategorie et on prend le même identifiant qui vient d'être donné avec l'auto_increment pour jointure
 
-        ResultType += "\t( \'" + ligne[1] + "\' , (SELECT IdSousCategorie FROM SousCategorie WHERE LibSousCategorie=\'" +ligne[3]+"\') ),\n"
+        ResultType += "\t( \'" + ligne[1] + "\' , (SELECT IdSousCategorie FROM SousCategorie WHERE LibSousCategorie=\'" +ligne[3]+ "\')" + " , \'" + ligne[0] +"\' ),\n"
 
     #Ecriture fichier sql
     with open(r'Base de donnees\sql\Categorie.sql','w') as fichiersql:
@@ -71,3 +71,10 @@ def CommuneDepRegion():
             ResultCommune += "\t( " + str(ligne[1]) + " , '"+ligne[-3] +"' , " + str(ligne[3]) + ' ), \n'
     with open(r'Base de donnees\sql\CommuneDepRegion.sql','w') as fichiersql:
         fichiersql.write(ResultRegion[:-3] + ';\n\n' + ResultDep[:-3] + ';\n\n' + ResultCommune[:-3] + ';\n\n')
+    
+
+def Equipement():
+    ResultEqu = EcritureSQLLigne('Equipement',['IdEquipement','Cantine','MaternellePrimaire','LyceeCPGE','EducPrio','Internat','RPIC','Secteur','Couvert',
+                                               'Eclaire','NbAireJeu','NbSalles',
+                                               'IdUtilisateur','IdModerateur','IdUtilisateur_Moderateur','IdModerateur_Supprimer','IdType','CodeCommune','IdLocalisation'])
+    

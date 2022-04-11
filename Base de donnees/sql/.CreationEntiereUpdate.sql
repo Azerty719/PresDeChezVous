@@ -244,6 +244,15 @@ CREATE TABLE Sanctionner(
 	,CONSTRAINT Sanctionner_Moderateur0_FK FOREIGN KEY (IdUtilisateur_Moderateur,IdModerateur) REFERENCES Moderateur(IdUtilisateur,IdModerateur)
 )ENGINE=InnoDB;
 
+#! CREATION UTILISATEUR ROOT
+
+INSERT INTO utilisateur (MDP,Mail,Nom ) VALUES(
+	'' , '' ,'root'
+);
+
+INSERT INTO utilisateur (  ) VALUES(
+	 your_values
+);
 
 #! CREATION CATEGORIES
 
