@@ -76,5 +76,6 @@ def CommuneDepRegion():
 def Equipement():
     ResultEqu = EcritureSQLLigne('Equipement',['IdEquipement','Cantine','MaternellePrimaire','LyceeCPGE','EducPrio','Internat','RPIC','Secteur','Couvert',
                                                'Eclaire','NbAireJeu','NbSalles',
-                                               'IdUtilisateur','IdModerateur','IdUtilisateur_Moderateur','IdModerateur_Supprimer','IdType','CodeCommune','IdLocalisation'])
+                                               'IdType','CodeCommune','IdLocalisation'])
+    
     

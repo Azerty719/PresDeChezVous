@@ -3,6 +3,7 @@ CREATE DATABASE BDpdcv;
 USE BDpdcv;
 
 #!   CREATION TABLE
+
 #------------------------------------------------------------
 # Table: Coordonnees
 #------------------------------------------------------------
@@ -103,13 +104,12 @@ CREATE TABLE SousCategorie(
 CREATE TABLE Type(
         IdType          Int  Auto_increment  NOT NULL ,
         LibType       Varchar (256) NOT NULL ,
-        IdSousCategorie Int NOT NULL
+        IdSousCategorie Int NOT NULL ,
+        CodeType Char (4) NOT NULL 
 	,CONSTRAINT Type_PK PRIMARY KEY (IdType)
 
 	,CONSTRAINT Type_SousCategorie_FK FOREIGN KEY (IdSousCategorie) REFERENCES SousCategorie(IdSousCategorie)
 )ENGINE=InnoDB;
-
-
 
 #------------------------------------------------------------
 # Table: Utilisateur
@@ -117,26 +117,10 @@ CREATE TABLE Type(
 
 CREATE TABLE Utilisateur(
         IdUtilisateur Int  Auto_increment  NOT NULL ,
-        MDP           Varchar (32) NOT NULL ,
+        MDP           Varchar (256) NOT NULL ,
         Mail          Varchar (256) NOT NULL ,
-        Nom           Varchar (32) NOT NULL
+        Nom           Varchar (256) NOT NULL
 	,CONSTRAINT Utilisateur_PK PRIMARY KEY (IdUtilisateur)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Contributeur
-#------------------------------------------------------------
-
-CREATE TABLE Contributeur(
-        IdUtilisateur  Int NOT NULL ,
-        IdContributeur Int NOT NULL ,
-        MDP            Varchar (32) NOT NULL ,
-        Mail           Varchar (256) NOT NULL ,
-        Nom            Varchar (32) NOT NULL
-	,CONSTRAINT Contributeur_PK PRIMARY KEY (IdUtilisateur,IdContributeur)
-
-	,CONSTRAINT Contributeur_Utilisateur_FK FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur)
 )ENGINE=InnoDB;
 
 
@@ -145,48 +129,11 @@ CREATE TABLE Contributeur(
 #------------------------------------------------------------
 
 CREATE TABLE Moderateur(
-        IdUtilisateur Int NOT NULL ,
-        IdModerateur  Int NOT NULL ,
-        MDP           Varchar (32) NOT NULL ,
-        Mail          Varchar (256) NOT NULL ,
-        Nom           Varchar (32) NOT NULL
-	,CONSTRAINT Moderateur_PK PRIMARY KEY (IdUtilisateur,IdModerateur)
-
-	,CONSTRAINT Moderateur_Utilisateur_FK FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Equipement
-#------------------------------------------------------------
-
-CREATE TABLE Equipement(
-        IdEquipement             Int  Auto_increment  NOT NULL ,
-        Cantine                  Bool ,
-        MaternellePrimaire       Bool ,
-        LyceeCPGE                Bool ,
-        EducPrio                 Bool ,
-        Internat                 Bool ,
-        RPIC                     Bool ,
-        Secteur                  Varchar (6) ,
-        Couvert                  Bool ,
-        Eclaire                  Bool ,
-        NbAireJeu                Int ,
-        NbSalles                 Int ,
-        IdUtilisateur            Int NOT NULL ,
-        IdModerateur             Int NOT NULL ,
-        IdUtilisateur_Moderateur Int ,
-        IdModerateur_Supprimer   Int ,
-        IdType                   Int NOT NULL ,
-        CodeCommune              Int NOT NULL ,
-        IdLocalisation           Int
-	,CONSTRAINT Equipement_PK PRIMARY KEY (IdEquipement)
-
-	,CONSTRAINT Equipement_Moderateur_FK FOREIGN KEY (IdUtilisateur,IdModerateur) REFERENCES Moderateur(IdUtilisateur,IdModerateur)
-	,CONSTRAINT Equipement_Moderateur0_FK FOREIGN KEY (IdUtilisateur_Moderateur,IdModerateur_Supprimer) REFERENCES Moderateur(IdUtilisateur,IdModerateur)
-	,CONSTRAINT Equipement_Type1_FK FOREIGN KEY (IdType) REFERENCES Type(IdType)
-	,CONSTRAINT Equipement_Commune2_FK FOREIGN KEY (CodeCommune) REFERENCES Commune(CodeCommune)
-	,CONSTRAINT Equipement_Coordonnees3_FK FOREIGN KEY (IdLocalisation) REFERENCES Coordonnees(IdLocalisation)
+        IdModerateur Int  Auto_increment  NOT NULL ,
+        MDP          Varchar (256) NOT NULL ,
+        Mail         Varchar (256) NOT NULL ,
+        Nom          Varchar (256) NOT NULL
+	,CONSTRAINT Moderateur_PK PRIMARY KEY (IdModerateur)
 )ENGINE=InnoDB;
 
 
@@ -195,19 +142,44 @@ CREATE TABLE Equipement(
 #------------------------------------------------------------
 
 CREATE TABLE Proposition(
-        IdModification             Int  Auto_increment  NOT NULL ,
-        DateProposition            Date NOT NULL ,
-        TypeProposition            Varchar (32) NOT NULL ,
-        LibProposition             Text ,
-        DateValidation             Date NOT NULL ,
-        IdUtilisateur              Int ,
-        IdModerateur               Int ,
-        IdUtilisateur_Contributeur Int NOT NULL ,
-        IdContributeur             Int NOT NULL
+        IdModification  Int  Auto_increment  NOT NULL ,
+        DateProposition Date NOT NULL ,
+        TypeProposition Varchar (256) NOT NULL ,
+        LibProposition  Text ,
+        IdModerateur    Int ,
+        IdUtilisateur   Int NOT NULL
 	,CONSTRAINT Proposition_PK PRIMARY KEY (IdModification)
 
-	,CONSTRAINT Proposition_Moderateur_FK FOREIGN KEY (IdUtilisateur,IdModerateur) REFERENCES Moderateur(IdUtilisateur,IdModerateur)
-	,CONSTRAINT Proposition_Contributeur0_FK FOREIGN KEY (IdUtilisateur_Contributeur,IdContributeur) REFERENCES Contributeur(IdUtilisateur,IdContributeur)
+	,CONSTRAINT Proposition_Moderateur_FK FOREIGN KEY (IdModerateur) REFERENCES Moderateur(IdModerateur)
+	,CONSTRAINT Proposition_Utilisateur0_FK FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Equipement
+#------------------------------------------------------------
+
+CREATE TABLE Equipement(
+        IdEquipement           Int  Auto_increment  NOT NULL ,
+        Cantine                Bool ,
+        MaternellePrimaire     Bool ,
+        LyceeCPGE              Bool ,
+        EducPrio               Bool ,
+        Internat               Bool ,
+        RPIC                   Bool ,
+        SECTEUR                Varchar (6) ,
+        Couvert                Bool ,
+        Eclaire                Bool ,
+        NbAireJeu              Int ,
+        NbSalles               Int ,
+        IdType                 Int NOT NULL ,
+        CodeCommune            Int ,
+        IdLocalisation         Int
+	,CONSTRAINT Equipement_PK PRIMARY KEY (IdEquipement)
+
+        ,CONSTRAINT Equipement_Type1_FK FOREIGN KEY (IdType) REFERENCES Type(IdType)
+	,CONSTRAINT Equipement_Commune2_FK FOREIGN KEY (CodeCommune) REFERENCES Commune(CodeCommune)
+	,CONSTRAINT Equipement_Coordonnees3_FK FOREIGN KEY (IdLocalisation) REFERENCES Coordonnees(IdLocalisation)
 )ENGINE=InnoDB;
 
 
@@ -217,41 +189,48 @@ CREATE TABLE Proposition(
 
 CREATE TABLE Modifier(
         IdEquipement  Int NOT NULL ,
-        IdUtilisateur Int NOT NULL ,
         IdModerateur  Int NOT NULL ,
-        TypeModif     Varchar (32) NOT NULL
-	,CONSTRAINT Modifier_PK PRIMARY KEY (IdEquipement,IdUtilisateur,IdModerateur)
+        DateModif     Date NOT NULL
+	,CONSTRAINT Modifier_PK PRIMARY KEY (IdEquipement,IdModerateur)
 
 	,CONSTRAINT Modifier_Equipement_FK FOREIGN KEY (IdEquipement) REFERENCES Equipement(IdEquipement)
-	,CONSTRAINT Modifier_Moderateur0_FK FOREIGN KEY (IdUtilisateur,IdModerateur) REFERENCES Moderateur(IdUtilisateur,IdModerateur)
+	,CONSTRAINT Modifier_Moderateur_FK FOREIGN KEY (IdModerateur) REFERENCES Moderateur(IdModerateur)
+)ENGINE=InnoDB;
+
+
+
+#------------------------------------------------------------
+# Table: TypeSanction
+#------------------------------------------------------------
+CREATE TABLE TypeSanction(
+        IdTypeSanction INT AUTO_INCREMENT NOT NULL ,
+        LibSanction VARCHAR (256) NOT NULL
+        ,CONSTRAINT TypeSanction_PK PRIMARY KEY (IdTypeSanction)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Sanctionner
+# Table: Sanction
 #------------------------------------------------------------
 
-CREATE TABLE Sanctionner(
-        IdUtilisateur            Int NOT NULL ,
-        IdContributeur           Int NOT NULL ,
-        IdUtilisateur_Moderateur Int NOT NULL ,
-        IdModerateur             Int NOT NULL ,
-        TypeSanction             Varchar (32) NOT NULL ,
-        RaisonSanction           Text NOT NULL
-	,CONSTRAINT Sanctionner_PK PRIMARY KEY (IdUtilisateur,IdContributeur,IdUtilisateur_Moderateur,IdModerateur)
+CREATE TABLE Sanction(
+        IdSanction      Int AUTO_INCREMENT NOT NULL ,
+        RaisonSanction Blob ,
+        IdModerateur INT NOT NULL ,
+        IdUtilisateur INT NOT NULL ,
+        IdTypeSanction Int NOT NULL
 
-	,CONSTRAINT Sanctionner_Contributeur_FK FOREIGN KEY (IdUtilisateur,IdContributeur) REFERENCES Contributeur(IdUtilisateur,IdContributeur)
-	,CONSTRAINT Sanctionner_Moderateur0_FK FOREIGN KEY (IdUtilisateur_Moderateur,IdModerateur) REFERENCES Moderateur(IdUtilisateur,IdModerateur)
-)ENGINE=InnoDB;
+        ,CONSTRAINT Sanction_PK PRIMARY KEY (IdSanction)
+
+        ,CONSTRAINT Sanction_Moderateur0_FK FOREIGN KEY (IdModerateur) REFERENCES Moderateur(IdModerateur)
+        ,CONSTRAINT Sanction_Utilisateur_FK FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateur(IdUtilisateur)
+        ,CONSTRAINT Sanction_TypeSanction_FK FOREIGN KEY (IdTypeSanction) REFERENCES TypeSanction(IdTypeSanction)
+)ENGINE InnoDB;
 
 #! CREATION UTILISATEUR ROOT
 
-INSERT INTO utilisateur (MDP,Mail,Nom ) VALUES(
+INSERT INTO Moderateur (MDP,Mail,Nom ) VALUES(
 	'' , '' ,'root'
-);
-
-INSERT INTO utilisateur (  ) VALUES(
-	 your_values
 );
 
 #! CREATION CATEGORIES
