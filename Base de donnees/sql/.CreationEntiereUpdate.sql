@@ -167,7 +167,7 @@ CREATE TABLE Equipement(
         EducPrio               Bool ,
         Internat               Bool ,
         RPIC                   Bool ,
-        SECTEUR                Varchar (6) ,
+        Secteur                Varchar (6) ,
         Couvert                Bool ,
         Eclaire                Bool ,
         NbAireJeu              Int ,

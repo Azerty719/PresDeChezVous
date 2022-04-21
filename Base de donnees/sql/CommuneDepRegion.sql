@@ -1,10 +1,10 @@
 INSERT INTO Region (CodeRegion,LibRegion) 
  VALUES 
-	( 01 , 'Guadeloupe' ), 
-	( 02 , 'Martinique' ), 
-	( 03 , 'Guyane' ), 
-	( 04 , 'La Réunion' ), 
-	( 06 , 'Mayotte' ), 
+	( 1 , 'Guadeloupe' ), 
+	( 2 , 'Martinique' ), 
+	( 3 , 'Guyane' ), 
+	( 4 , 'La Réunion' ), 
+	( 6 , 'Mayotte' ), 
 	( 11 , 'Île-de-France' ), 
 	( 24 , 'Centre-Val de Loire' ), 
 	( 27 , 'Bourgogne-Franche-Comté' ), 
@@ -117,15 +117,14 @@ INSERT INTO Departement (CodeDepartement,LibDepartement,CodeRegion)
 	( 93 , 'Seine-Saint-Denis' , 11 ), 
 	( 94 , 'Val-de-Marne' , 11 ), 
 	( 95 , 'Val-d_Oise' , 11 ), 
-	( 971 , 'Guadeloupe' , 01 ), 
-	( 972 , 'Martinique' , 02 ), 
-	( 973 , 'Guyane' , 03 ), 
-	( 974 , 'La Réunion' , 04 ), 
-	( 976 , 'Mayotte' , 06 );
+	( 971 , 'Guadeloupe' , 1 ), 
+	( 972 , 'Martinique' , 2 ), 
+	( 973 , 'Guyane' , 3 ), 
+	( 974 , 'La Réunion' , 4 ), 
+	( 976 , 'Mayotte' , 6 );
 
 INSERT INTO Commune (CodeCommune,LibCommune,CodeDepartement) 
- VALUES 
-	( 01001 , 'L_Abergement-Clémenciat' , 01 ), 
+ VALUE	( 01001 , 'L_Abergement-Clémenciat' , 01 ), 
 	( 01002 , 'L_Abergement-de-Varey' , 01 ), 
 	( 01004 , 'Ambérieu-en-Bugey' , 01 ), 
 	( 01005 , 'Ambérieux-en-Dombes' , 01 ), 
