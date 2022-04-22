@@ -8,8 +8,8 @@ USE BDpdcv;
 
 CREATE TABLE Coordonnees(
         IdLocalisation Int  Auto_increment  NOT NULL ,
-        Latitude       Float NOT NULL ,
-        Longitude      Float NOT NULL ,
+        LatitudeGPS       Float NOT NULL ,
+        LongitudeGPS      Float NOT NULL ,
         UTMX           Float NOT NULL ,
         UTMY           Float NOT NULL ,
         QualiteXY      Int NOT NULL
