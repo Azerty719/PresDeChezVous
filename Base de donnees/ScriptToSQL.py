@@ -1,31 +1,26 @@
 #Ce script sert à récupérer les données csv pour les mettre dans le sgbd sql. On n'en aura plus besoin une fois tout transformé
 import pandas as pd
 import numpy as np
-from sqlalchemy import create_engine,text,func,Table,MetaData,Column,select,Integer
+from sqlalchemy import create_engine,text,Table,MetaData,Column,Integer
 import pyproj
 import time
 import requests as rq
-#------------------------------------------------------------------------------------------------------
-#Paramètres de connexion du sgbd (forcément mysql ici, sinon changer ligne 20 'mysql' par le sgbd approprié)
+from index import AbsolutePath,ConnectionRootMysql
+#pip install pymysql en +
 
-USER = 'root'
-PASSWORD = ''
-HOST = 'localhost'
-PORT = ''
-DATABASE = 'bdpdcv'
 
-if PORT != '':
-    PORT = ':'+PORT
-engine = 'mysql+pymysql://'+USER+'@'+HOST+PORT + '/'+DATABASE
+#Importation des paramètres de connexion du sgbd (forcément mysql ici, sinon changer ligne 30 'mysql' par le sgbd approprié)
+engine = ConnectionRootMysql()
 sqlEngine = create_engine(engine,pool_recycle=3600)
-
 
 #Plus le chiffre est grand plus l'execution est rapide mais + de risque de surcharge de mémoire
 tailleTable = 60000 #!Pas prévu pour en dessous de 1000
 
+#------------------------------------------------------------------------------------------------------
 
 #Reinitialiser toutes les tables
 def Reinit(fichiersql):
+    fichierssql = AbsolutePath(fichierssql)
     dbConection = sqlEngine.connect()           #Connexion sgbd
     fichiersql = open(fichiersql,'r')           #Ouverture fichier sql
     requete = ''                                #Initialisation requête
@@ -38,9 +33,11 @@ def Reinit(fichiersql):
             requete = ''                        #Remet à 0 la requete
     fichiersql.close()                          #Deconnexion sgbd
     dbConection.close()                         #Fermeture fichier
+
 #------------------------------------------------------------------------------------------------------
 
 def Categorie(fichier):
+    fichier = AbsolutePath(fichier)
     table = pd.read_csv(fichier,sep=';',encoding = 'utf8')
     table = table.rename(columns = {'TYPEQU':'CodeType','LIB_EQUIP':'LibType','SDOM':'IdSousCategorie','LIB_SDOM':'LibSousCategorie','DOM':'IdCategorie','LIB_DOM':'LibCategorie'})
                         #On garde CodeType et IdType (str et int)
@@ -63,7 +60,9 @@ def Categorie(fichier):
 #------------------------------------------------------------------------------------------------------
 
 def CommuneDepRegion(fichierRegion,fichierDep,fichierCommune):
-
+    fichierRegion = AbsolutePath(fichierRegion)
+    fichierDep = AbsolutePath(fichierDep)
+    fichierCommune = AbsolutePath(fichierCommune)
     print(fichierCommune + '\n \n Chargement... \n')
 
     tableRegion = pd.read_csv(fichierRegion,sep=',',encoding = 'utf8')
@@ -126,6 +125,9 @@ def ConverterLonLat(epsg,x,y):
 
 
 def Equipement(fichierEns,fichierEnsgt,fichierSL):
+    fichierEns = AbsolutePath(fichierEns)
+    fichierEnsgt = AbsolutePath(fichierEnsgt)
+    fichierSL = AbsolutePath(fichierSL)
     print(fichierEns+ '\n'  + fichierEnsgt +'\n' + fichierSL + ' \n \n Chargement... \n')
     tables = {'Ens':LectureCSV(fichierEns) , 'Ensgt':LectureCSV(fichierEnsgt) , 'SL':LectureCSV(fichierSL)}
     nbTables = NbTables(fichierEns) + NbTables(fichierEnsgt) + NbTables(fichierSL)
@@ -277,17 +279,17 @@ def Adresse():
 
 #------------------------------------------------------------------------------------------------------
 
-# Reinit(r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\sql\CreationTables.sql')
-# Categorie(r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\BPE20_table_passage.csv')
+Reinit('CreationTables.sql')
+Categorie('BPE20_table_passage.csv')
 
-# CommuneDepRegion(r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\region_2022.csv'
-#                  ,r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\departement_2022.csv'
-#                  ,r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\communes-01012019.csv')
+CommuneDepRegion('region_2022.csv',
+                 'departement_2022.csv',
+                 'communes-01012019.csv')
 
-# Equipement(r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\bpe20_ensemble_xy.csv',
-#            r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\bpe20_enseignement_xy.csv',
-#            r'C:\Users\utilisateur\Desktop\Cours\Projet Info\Github\Base de donnees\csv\bpe20_sport_loisir_xy.csv')
-# Adresse()
+Equipement('bpe20_ensemble_xy.csv',
+           'bpe20_enseignement_xy.csv',
+           'bpe20_sport_loisir_xy.csv')
+Adresse()
 
 
 

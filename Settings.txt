@@ -1,0 +1,23 @@
+Paramètres de connexion
+
+-------------------------------------------------------------------------------------------------------------
+
+S'il n'y a rien à mettre (par exemple le port), laisser le champ vide.
+Il est possible de donner seulement l'utilisateur root (non conseillé). Laisser alors les champs des autres utilisateurs vides
+
+Connexion au serveur
+HOST : localhost
+PORT : 
+
+Utilisateur ayant tous les accès 
+ROOT : root
+PASSWORD_ROOT :
+
+Utilisateur ayant les accès de lecture (SELECT)
+READER :
+PASSWORD_READER :     
+
+Nom de la base (à changer seulement si le nom a été modifié manuellement)
+DATABASE : bdpdcv
+
+-------------------------------------------------------------------------------------------------------------
