@@ -1,0 +1,5 @@
+{% macro BoutonLink(Page,NomBouton) %}
+<form method='GET'>
+    <button name = 'p' type="submit", value={{Page}}>  {{NomBouton | raw}} </button> 
+</form>
+{% endmacro %}

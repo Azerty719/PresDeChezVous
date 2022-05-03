@@ -1,0 +1,15 @@
+{% from ".macro.twig" import BoutonLink%}
+
+
+<div class="caseRecherche">
+    <div class="barreRecherche">
+        <div class="boutonRechercheCategorie"> <button> Catégories &#11206; </button> </div>
+        <div class="barreRecherchePrincipal"><input type="search" placeholder="Saisissez une ville, une adresse..."> </div>
+        <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
+    </div>
+    <div class="boutonValider">
+        {{BoutonLink('Recherche','Valider')}}
+    </div>
+</div>
+
+{{Recherche}}

@@ -1,0 +1,17 @@
+{
+    "name": "presdechezvous/twig",
+    "autoload": {
+        "psr-4": {
+            "Presdechezvous\\Twig\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arnaud",
+            "email": "arnaud.mabit@etu.univ-tours.fr"
+        }
+    ],
+    "require": {
+        "twig/twig": "3"
+    }
+}

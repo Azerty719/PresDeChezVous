@@ -1,0 +1,61 @@
+{% extends ".layout.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/Recherche.css">
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/CaseRecherche.css">
+
+
+{% endblock style %}
+
+{% block contenu %}
+
+   {{ include('.Case_recherche.html') }}
+
+    <div class="caseResultat case1">
+        <div class="ligne1">
+            <div class="typeEquipement"> Ecole maternelle </div>
+            <div class="distance"> à 178m</div>
+        </div>
+        <div class="position">
+            68 rue Marguerite De Rochechouart, Paris, 75009
+            <a href="https://www.google.com/maps/place/68+Rue+Marguerite+de+Rochechouart,+75009+Paris/">
+                voir le plan</a>
+        </div>
+
+        <div class="etat">
+            <div class="cantine"><strong> Cantine : <sup></sup></strong> oui</div>
+            <div class="secteur"> <strong> Secteur : <sup></sup></strong> public</div>
+            <div class="RP"> <strong>Regroupement pédagogique <sup> <a
+                            href="https://fr.wikipedia.org/wiki/Regroupement_p%C3%A9dagogique">?</a> </sup> : </strong>
+                non</div>
+        </div>
+        <p class="imageType"><img src="../PresDeChezVous/templates/img/enseignement.jpg" alt="enseignement" width="100"></p>
+    </div>
+
+    <div class="caseResultat case2">
+        <div class="ligne1">
+            <div class="typeEquipement"> Boulangerie </div>
+            <div class="distance"> à &#xB1; 5km</div>
+        </div>
+        <div class="position">
+            Paris
+            <a href="https://www.google.com/maps/place/Paris">
+                voir le plan</a>
+        </div>
+
+        <div class="positionForm">
+            <form method="post">
+                <div class="textPositionAide">
+                    <label for="newAdresse"> Vous connaissez l'adresse précise ? </label>
+                    <input type="text" name="newAdresse" id="newAdresse"
+                        placeholder="68 rue Marguerite De Rochechouart, Paris, 75009" required>
+                </div>
+                <div class="boutonPositionAide">
+                    <input type="submit" value="Valider">
+                </div>
+            </form>
+        </div>
+        <p class="imageType"><img src="../PresDeChezVous/templates/img/commerce.png" alt="commerce" width="100"></p>
+    </div>
+
+    {% endblock %}

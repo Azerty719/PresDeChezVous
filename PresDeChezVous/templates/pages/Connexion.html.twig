@@ -1,0 +1,29 @@
+{% extends ".layout.html" %}
+{% from  ".layout_form.html" import formSett,formInput,bouton %}
+
+{% block style %}
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/Form_User.css">
+{% endblock style %}
+
+
+{% block contenu %}
+
+{# Formulaire se connecter #}
+{{formSett('#','POST','Se connecter')}}
+
+{{ formInput('Identifiant','text') }}
+{{ formInput('Mot de passe','password')}}
+
+{{bouton('Se conecter')}}
+</form>
+
+{# Formulaire Inscription #} 
+{{formSett('#','POST',"S'inscrire")}}
+
+{{ formInput('Adresse email','email') }}
+{{ formInput('Mot de passe','password')}}
+{{ formInput('Répéter le mot de passe','password')}}
+
+{{bouton("S'inscire")}}
+</form>
+{% endblock contenu %}
