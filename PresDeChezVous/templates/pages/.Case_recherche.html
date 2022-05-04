@@ -1,15 +1,33 @@
-{% from ".macro.twig" import BoutonLink%}
+{% from ".macro.twig" import BoutonLink,CheckboxCat %}
 
+{% block style %}
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/CaseRecherche.css">
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/Deroulant_recherche.css">
+
+{% endblock %}
 
 <div class="caseRecherche">
     <div class="barreRecherche">
-        <div class="boutonRechercheCategorie"> <button> Catégories &#11206; </button> </div>
-        <div class="barreRecherchePrincipal"><input type="search" placeholder="Saisissez une ville, une adresse..."> </div>
+        <div class="menuDeroulant">
+            <nav> <ul> <li class="deroulant"><button class="LibBouton"> Catégories &#11206; </button> </a>
+                        <ul class="sous">
+                            <form method="POST">
+                                {% for ligneCat in Categorie %}
+                                {{CheckboxCat('Categorie[]',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
+                                </ul>                    
+                                {% endfor %}
+                        </ul>
+            </li> </ul> </nav>
+        </div>
+        <div class="barreRecherchePrincipal"><input type="search" placeholder="Saisissez une ville, une adresse...">
+        </div>
         <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
     </div>
     <div class="boutonValider">
-        {{BoutonLink('Recherche','Valider')}}
+        <button type="submit" name="Categories">Valider</button>
     </div>
+
+    </form>
 </div>
 
 {{Recherche}}

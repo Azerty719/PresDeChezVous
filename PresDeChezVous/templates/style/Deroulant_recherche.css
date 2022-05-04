@@ -1,0 +1,106 @@
+  /* !DEROULANT */
+  .menuDeroulant nav {
+    background-color: white;
+    position: sticky;
+    top: 0px;
+  }
+  
+  .menuDeroulant nav ul {
+    list-style-type: none;
+  }
+  
+  .menuDeroulant nav ul li {
+    text-align: center;
+    position: relative;
+    list-style-type: none;
+  }
+  
+  .menuDeroulant nav ul::after {
+    display: table;
+    clear: both; 
+  }
+  
+  .menuDeroulant nav a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .menuDeroulant nav a:hover {
+    color: rgb(0, 140, 255);
+  }
+  
+  .menuDeroulant .deroulant .sous {
+    display: none;
+    box-shadow: 0px 1px 2px #ccc;
+    background-color: white;
+    position: absolute;
+    width: 330px;
+    z-index: 10;
+    padding-top: 0.5rem;
+    opacity: 101%;
+  }
+  .menuDeroulant nav > ul li:hover .sous {
+    display: block;
+  }
+  .menuDeroulant .sous li {
+    width: 100%;
+    text-align: left;
+  }
+  .menuDeroulant .sous a {
+    padding: 10px;
+    border-bottom: none;
+  }
+  .menuDeroulant .sous a:hover {
+    border-bottom: none;
+    /* background-color: RGBa(200, 200, 200, 0.1); */
+  }
+  
+  .menuDeroulant .deroulant > a::after {
+    font-size: 12px;
+  }
+  
+  .LibBouton {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: rgba(238, 238, 238, 0.678);
+  }
+  
+  
+  .menuDeroulant .sous .Cat {
+    padding: 5px;
+    border-bottom: none;
+    display: flex;
+  }
+  .menuDeroulant .sous .Cat:hover {
+    border-bottom: none;
+    /* background-color: RGBa(200, 200, 200, 0.1); */
+  }
+  
+  .menuDeroulant .deroulant > .Cat::after {
+    font-size: 12px;
+  }
+  .menuDeroulant nav .Cat {
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .menuDeroulant nav .Cat:hover {
+    color: rgb(0, 140, 255);
+    background-color: whitesmoke;
+  }
+  
+  .menuDeroulant .sous .Cat .Check{
+    width: 10%;
+  }
+  
+  .menuDeroulant .sous .Cat label{
+    flex:4;
+  }
+  
+  .menuDeroulant .sous .Cat .fleche{
+    margin-top: -2%;
+  }

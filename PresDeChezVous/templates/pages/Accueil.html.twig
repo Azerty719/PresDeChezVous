@@ -2,11 +2,13 @@
 
 {% block style %}
 <link rel="stylesheet" href="../PresDeChezVous/templates/style/Accueil.css">
-<link rel="stylesheet" href="../PresDeChezVous/templates/style/CaseRecherche.css">
 {% endblock style %}
 
+
 {% block contenu %}
+
 <h1 class="titre"> Des centaines d'établissements autour de chez vous</h1>
+{{page}}
 
 {{include('.Case_recherche.html')}}
 
@@ -24,14 +26,8 @@
     </p>
     Une idée ? Une suggestion ? Vous pouvez nous contacter en <a
         href="../PresDeChezVous/?p=Contactez-nous">cliquant ici</a>
-    
-        {% for row in salut %}
-            <li>{{row.name}}</li> 
-        {% endfor %}
 </div>
 
-<div class="videoContainer">
-    <video class="videoTuto" preload="metadata" src="VideoTuto.mp4" controls> Désolé, votre navigateur ne supporte
+    <video class="videoTuto" preload="metadata" src="../PresDeChezVous/templates/img/VideoTuto.mp4" controls > Désolé, votre navigateur ne supporte
         pas ce format de vidéo</video>
-</div>
 {% endblock %}

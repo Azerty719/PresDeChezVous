@@ -4,6 +4,7 @@ Il a l'avantage d'afficher l'avancement au fur à mesure de l'importation et
 de régler tout ce qui est limite de taille de fichier de temps d'importation
 """
 from sqlalchemy import create_engine, text
+from sqlalchemy.engine.url import URL
 from index import AbsolutePath,ConnectionRootMysql
 
 #Importation des paramètres de connexion du sgbd (forcément mysql ici, sinon changer ligne 30 'mysql' par le sgbd approprié)
@@ -18,7 +19,7 @@ def Importation(fichiersql):
     print('\n Chargement... \n')
     Funct = False #Initialise booléan si on est dans un bloc avec delimiter
     dbConection = sqlEngine.connect()           #Connexion sgbd
-    fichiersqlr = open(fichiersql,'r')           #Ouverture fichier sql
+    fichiersqlr = open(fichiersql,'r',encoding='utf8')           #Ouverture fichier sql
     nbrow = sum(1 for row in open(fichiersql,'r')) #Nombre de lignes dans le .sql
     fichiersql = fichiersqlr.readlines()        #Liste de toutes les lignes .sql
     requete = ''                                #Initialisation requête
@@ -27,7 +28,6 @@ def Importation(fichiersql):
         line = line.replace('\n','')            #Supprime les sauts de ligne
         if not line.startswith('--'):           #Supprime les commentaires
             requete += line                     #Ajoute la ligne à la requête
-
         if 'DELIMITER' in line: #On entre ou sort d'un bloc avec delimiter
             Funct = not Funct   #change valeur du booléen
             if not Funct:
@@ -45,7 +45,7 @@ def Importation(fichiersql):
         if AvTemp != Av:        #Affiche l'avancement seulement tous les 0.01%
             Av = AvTemp
             if Av == 100:
-                print('Ne pas quitter, la toute fin est assez longue... (quelques secondes)')
+                print('Ne pas quitter, la toute fin est assez longue... (quelques minutes)')
             else:
                 print(Av,'%')
     print('100 %')

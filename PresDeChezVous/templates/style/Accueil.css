@@ -16,15 +16,6 @@ h2 {
   margin-inline-end: 0px;
   font-weight: bold;
 }
-ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
 
 /* !TITRE */
 .titre {
@@ -32,9 +23,6 @@ ul {
   padding-bottom: 1rem;
   font-size: 22px;
 }
-
-/* !CASE RECHERCHE */
-/* Dans header.css */
 
 /*! TEXTE */
 
@@ -46,13 +34,12 @@ ul {
 
 /*! VIDEO TUTO */
 
-.videoContainer {
-  display: flex;
-}
 
 .videoTuto {
   width: 500px;
   margin: auto;
   margin-top: 2rem;
   align-self: center;
+  z-index: -1;
+  display: flex;
 }

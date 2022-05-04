@@ -1,5 +1,12 @@
 {% macro BoutonLink(Page,NomBouton) %}
 <form method='GET'>
-    <button name = 'p' type="submit", value={{Page}}>  {{NomBouton | raw}} </button> 
+    <button name = 'p' type="submit" value={{Page}}>  {{NomBouton | raw}} </button> 
 </form>
+{% endmacro %}
+
+
+{% macro CheckboxCat(name,id,Lib) %}
+    <li> <div class="Cat"> <div class="Check"> <input type="checkbox" name={{name}} value="{{id}}" checked></div>  
+        <label for="{{id}}">{{Lib}}</label>    <div class="fleche"> &#9205; </div>           </div>
+ </li>
 {% endmacro %}

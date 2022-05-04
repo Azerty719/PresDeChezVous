@@ -3,13 +3,14 @@ import os
 
 def AbsolutePath(FileName):
     absolutepath = os.path.abspath(__file__)
-    fileDirectory = os.path.dirname(absolutepath)
-    parentDirectory = os.path.dirname(fileDirectory) #On a le chemin jusqu'au dossier du projet
-    for root, dirs, files in os.walk(parentDirectory):
+    while 'PresDeChezVous' in absolutepath: #Remonte jusqu'au dossier du projet
+        absolutepath = os.path.dirname(absolutepath)
+    print(absolutepath)
+    for root, dirs, files in os.walk(absolutepath): #Tous les fichiers du projet sont parcourues
         for name in files:
             if name == FileName:
                 return (os.path.abspath(os.path.join(root, name)))
-    
+
 
 with open(AbsolutePath('Settings.txt'),encoding='utf8') as fichSett:
     Sett = dict()
@@ -32,4 +33,4 @@ def ConnectionRootMysql():
         PASSWORD = ':'+PASSWORD
     if PORT != '':
         PORT = ':'+PORT
-    return 'mysql+pymysql://'+USER+PASSWORD+'@'+HOST+PORT + '/'+DATABASE
+    return 'mysql+pymysql://'+USER+PASSWORD+'@'+HOST+PORT + '/'+DATABASE+'?charset=utf8mb4'
