@@ -38,7 +38,74 @@
             </li>
         </ul>
 
-        <div class="barreRecherchePrincipal"><input type="search" placeholder="Saisissez une ville, une adresse...">
+        <div>
+            <input name="cp" id="cp" type="text" placeholder="Code postal">
+            <input name="ville" id="ville" type="text" placeholder="Ville">
+            <input name="adresse" id="adresse" type="text" placeholder="Adresse">
+            <script>
+                $("#cp").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='cp']").val()+"&limit=15",
+                            data: { q: request.term },
+                            dataType: "json",
+                            success: function (data) {
+                                var postcodes = [];
+                                response($.map(data.features, function (item) {
+                                    if ($.inArray(item.properties.city, postcodes) == -1) {
+                                        postcodes.push(item.properties.city);
+                                        return { label: item.properties.postcode + " - " + item.properties.city, 
+                                                 city: item.properties.city,
+                                                 value: item.properties.postcode
+                                        };
+                                    }
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        $('#ville').val(ui.item.city);
+                    }
+                });
+                $("#ville").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "https://api-adresse.data.gouv.fr/search/?city="+$("input[name='ville']").val(),
+                            data: { q: request.term },
+                            dataType: "json",
+                            success: function (data) {
+                                var cities = [];
+                                response($.map(data.features, function (item) {
+                                    if ($.inArray(item.properties.postcode, cities) == -1) {
+                                        cities.push(item.properties.postcode);
+                                        return { label: item.properties.postcode + " - " + item.properties.city, 
+                                                 postcode: item.properties.postcode,
+                                                 value: item.properties.city
+                                        };
+                                    }
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        $('#cp').val(ui.item.postcode);
+                    }
+                });
+                $("#adresse").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='cp']").val(),
+                            data: { q: request.term },
+                            dataType: "json",
+                            success: function (data) {
+                                response($.map(data.features, function (item) {
+                                    return { label: item.properties.name, value: item.properties.name};
+                                }));
+                            }
+                        });
+                    }
+                });
+                </script>
         </div>
         <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
     </div>
