@@ -109,7 +109,7 @@ switch ($page){
     case 'Accueil':
         echo $twig->render('Accueil'.$ext , $Categories =  [
                                                 'Categorie'     => Categories('IdCategorie','LibCategorie','None','Categorie'),
-                                                'SousCategorie' => Categories('IdSousCategorie','LibSousCategorie','IdSousCategorie','SousCategorie'),
+                                                'SousCategorie' => Categories('IdSousCategorie','LibSousCategorie','IdCategorie','SousCategorie'),
                                                 'Type'          => Categories('IdType','LibType','IdSousCategorie','Type')
                                             ]
                                         );

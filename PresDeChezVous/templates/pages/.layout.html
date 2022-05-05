@@ -9,12 +9,12 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../PresDeChezVous/templates/style/Header.css">
     <link rel="stylesheet" href="https://picturepan2.github.io/icons.css/dist/icons.min.css">
-    
-    {% block style %}   {% endblock %}
+
+    {% block style %} {% endblock %}
 </head>
 
 <body>
-    
+
     {#! HEADER #}
     <div class="headerBackground">
         <div class="headerContenu">
@@ -36,10 +36,11 @@
                     </ul>
                 </nav>
             </div>
-            <div class="logo transparent"> 
-                {{BoutonLink('Accueil','<img class="logo-img" src="../PresDeChezVous/templates/img/Logo_site.png" alt="Logo"> ')}}
-                
-                
+            <div class="logo transparent">
+                {{BoutonLink('Accueil','<img class="logo-img" src="../PresDeChezVous/templates/img/Logo_site.png"
+                    alt="Logo"> ')}}
+
+
             </div>
             <div class="nom"> Près de chez vous</div>
             <div class="boutonRechercheHeader">
@@ -57,7 +58,5 @@
     {#! /HEADER #}
 
 
-    {% block contenu %}   {% endblock %}
+    {% block contenu %} {% endblock %}
 </body>
-
-</Pages>
