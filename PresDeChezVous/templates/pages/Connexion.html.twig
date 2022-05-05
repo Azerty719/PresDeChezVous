@@ -6,8 +6,9 @@
 {% endblock style %}
 
 
-{% block contenu %}
 
+{% block contenu %}
+{% include ".NonDisponible.html" %}
 {# Formulaire se connecter #}
 {{formSett('#','POST','Se connecter')}}
 {#       Action  Méthode    Titre             #}

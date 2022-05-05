@@ -7,6 +7,7 @@
         <ul class="Deroulant">
             <li> <button class="LibBouton"> Catégories &#11206; </button>
                 <ul id="Menu">
+                <form action="../PresDeChezVous/?p=Recherche" method="POST">
                     {% for ligneCat in Categorie %}
                     <li>
                         {{CheckboxCat('Categorie[]',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
@@ -34,19 +35,20 @@
                         </ul>
                     </li>
                     {% endfor %}
+                    
                 </ul>
             </li>
         </ul>
 
-        <div class="barreRecherchePrincipal"><input type="search" placeholder="Saisissez une ville, une adresse...">
+        <div class="barreRecherchePrincipal"><input name ='Adresse' type="search" placeholder="Saisissez une ville, une adresse...">
         </div>
         <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
     </div>
     <div class="boutonValider">
-        <button type="submit" name="Categories">Valider</button>
+        <button type="submit" name="Recherche">Valider</button>
     </div>
+
+    </form>
 
     {# </form> #}
 </div>
-
-{{Recherche}}
