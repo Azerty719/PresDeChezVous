@@ -1,52 +1,107 @@
-{% from ".macro.twig" import BoutonLink,CheckboxCat,CheckboxType %}
+{% from ".macro.twig" import BoutonLink,CheckboxCat %}
 
+{% block style %}
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/CaseRecherche.css">
+<link rel="stylesheet" href="../PresDeChezVous/templates/style/Deroulant_recherche.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+
+{% endblock %}
 
 <div class="caseRecherche">
     <div class="barreRecherche">
-
-        <ul class="Deroulant">
-            <li> <button class="LibBouton"> Catégories &#11206; </button>
-                <ul id="Menu">
-                <form action="../PresDeChezVous/?p=Recherche" method="POST">
-                    {% for ligneCat in Categorie %}
-                    <li>
-                        {{CheckboxCat('Categorie',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
-                        <ul>
-                            {% for ligneSousCat in SousCategorie %}
-                            {% if ligneSousCat['IdCategorie'] == ligneCat['IdCategorie'] %}
-                            <li>
-                                {{CheckboxCat('SousCategorie',ligneSousCat['IdSousCategorie'],ligneSousCat['LibSousCategorie'])}}
-
-                                <ul class="Type">
-                                    {% for ligneType in Type %}
-
-                                    {% if ligneType['IdSousCategorie'] == ligneSousCat['IdSousCategorie'] %}
-                                    <li>
-                                        {{CheckboxType('Type',ligneType['IdType'],ligneType['LibType'])}}
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
+        <div class="menuDeroulant">
+            <nav> <ul> <li class="deroulant"><button class="LibBouton"> Catégories &#11206; </button> </a>
+                        <ul class="sous">
+                            <form method="POST">
+                                {% for ligneCat in Categorie %}
+                                {{CheckboxCat('Categorie[]',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
+                                </ul>                    
+                                {% endfor %}
                         </ul>
-                    </li>
-                    {% endfor %} 
-                </ul>
-            </li>
-        </ul>
-
-        <div class="barreRecherchePrincipal"><input name ='Adresse' type="search" autocomplete="address-level4" placeholder="Saisissez une ville, une adresse..." pattern="(.|\s)*\S(.|\s)*" required>
+            </li> </ul> </nav>
         </div>
-
-        <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
+        <div>
+            <input name="cp" id="cp" type="text" placeholder="Code postal">
+            <input name="ville" id="ville" type="text" placeholder="Ville">
+            <input name="adresse" id="adresse" type="text" placeholder="Adresse">
+            <script>
+                $("#cp").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='cp']").val()+"&limit=15",
+                            data: { q: request.term },
+                            dataType: "json",
+                            success: function (data) {
+                                var postcodes = [];
+                                response($.map(data.features, function (item) {
+                                    // Ici on est obligé d'ajouter les CP dans un array pour ne pas avoir plusieurs fois le même
+                                    if ($.inArray(item.properties.city, postcodes) == -1) {
+                                        postcodes.push(item.properties.city);
+                                        return { label: item.properties.postcode + " - " + item.properties.city, 
+                                                 city: item.properties.city,
+                                                 value: item.properties.postcode
+                                        };
+                                    }
+                                }));
+                            }
+                        });
+                    },
+                    // On remplit aussi la ville
+                    select: function(event, ui) {
+                        $('#ville').val(ui.item.city);
+                    }
+                });
+                $("#ville").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "https://api-adresse.data.gouv.fr/search/?city="+$("input[name='ville']").val(),
+                            data: { q: request.term },
+                            dataType: "json",
+                            success: function (data) {
+                                var cities = [];
+                                response($.map(data.features, function (item) {
+                                    // Ici on est obligé d'ajouter les villes dans un array pour ne pas avoir plusieurs fois la même
+                                    if ($.inArray(item.properties.postcode, cities) == -1) {
+                                        cities.push(item.properties.postcode);
+                                        return { label: item.properties.postcode + " - " + item.properties.city, 
+                                                 postcode: item.properties.postcode,
+                                                 value: item.properties.city
+                                        };
+                                    }
+                                }));
+                            }
+                        });
+                    },
+                    // On remplit aussi le CP
+                    select: function(event, ui) {
+                        $('#cp').val(ui.item.postcode);
+                    }
+                });
+                $("#adresse").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='cp']").val(),
+                            data: { q: request.term },
+                            dataType: "json",
+                            success: function (data) {
+                                response($.map(data.features, function (item) {
+                                    return { label: item.properties.name, value: item.properties.name};
+                                }));
+                            }
+                        });
+                    }
+                });
+                </script>
+        </div>
+        <div class="boutonRecherchePrincipal"><button> &#128269; </button></div>
     </div>
     <div class="boutonValider">
-        <button type="submit" name="Recherche">Valider</button>
+        <button type="submit" name="Categories">Valider</button>
     </div>
 
     </form>
-
-    {# </form> #}
 </div>
+
+{{Recherche}}
