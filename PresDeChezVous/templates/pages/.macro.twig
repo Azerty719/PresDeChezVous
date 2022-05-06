@@ -9,7 +9,7 @@
 
 {% macro CheckboxCat(name,id,Lib) %}
 	<div class="Cat">
-		<div class="Check"> <input type="checkbox" name="{{name}}" value="{{id}}" checked> </div>
+		<div class="Check"> <input type="checkbox" name="{{name}}[]" value="{{id}}" checked> </div>
 		<label for="{{id}}">{{Lib}}</label>
 		<div class="fleche"> &#9205; </div>
 	</div>
@@ -17,7 +17,7 @@
 
 {% macro CheckboxType(name,id,Lib) %}
 	<div class="Cat">
-		<div class="Check"> <input type="checkbox" name={{name}} value="{{id}}" checked> </div>
+		<div class="Check"> <input  type="checkbox" name="{{name}}[]" value="{{id}}" checked> </div>
 		<label for="{{id}}">{{Lib}}</label>
 	</div>
 {% endmacro %}

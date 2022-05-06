@@ -9,26 +9,29 @@ if (isset($_GET['p'])) {
     $page = $_GET['p'];
 };
 
-// function getAdresseLoc ($Type,$table){
-//     $curl = curl_init('https://api-adresse.data.gouv.fr/search/?q=8+bd+du+port&limit=1');
-//     $options = [
-//     CURLOPT_CAINFO => __DIR__ . DIRECTORY_SEPARATOR .'certificatSSL.cer',
-//     CURLOPT_RETURNTRANSFER => true  ];
-//     curl_setopt_array($curl,$options);
-//     $data = curl_exec($curl);
-    
-//     if($data === false ){
-//         global $page,$Erreur,$msg_erreur;
-//         $page = 'Erreur';
-//         $msg_erreur = "Désolé, il semble qu'une erreur est apparue lors de la récupération des adresses";
-//         $Erreur = curl_error($curl);
-    
-//     } else {
-//         $data = json_decode($data,true);
-//         echo var_dump($data['features'][0]['geometry']);
 
-//     };
-// }
+function ExecAPI($url){
+    $curl = curl_init($url);
+    $options = [
+        CURLOPT_CAINFO => __DIR__ . DIRECTORY_SEPARATOR .'certificatSSL.cer',
+        CURLOPT_RETURNTRANSFER => true  ];
+        curl_setopt_array($curl,$options);
+        $data = curl_exec($curl);
+    if($data === false ){
+        global $page,$Erreur,$msg_erreur;
+        $page = 'Erreur';
+        $msg_erreur = "Désolé, il semble qu'une erreur est apparue lors de la récupération des adresses";
+        $Erreur = curl_error($curl);
+    } else {
+        $data = json_decode($data,true);
+        return $data;
+    }
+}
+$adresse = 'https://api-adresse.data.gouv.fr/search/?q=8+allee+aimee+de+la+rochefoucauld&limit=1';
+
+// echo count(ExecAPI($adresse)['features']);
+// echo var_dump(ExecAPI($adresse)['features'][0]);
+
 
 
 // Paramètres Twig
@@ -41,24 +44,66 @@ $twig = new \Twig\Environment($loader, $options);
 
 // Valeur des boutons
 function ResultSearch(){
-    if (isset($_POST['Recherche'])){
-        $page = 'Recherche';                #Aller à la page Recherche
-        $TableCat = $_POST['Categorie']; #Array
-        echo var_dump($TableCat);
-        $tableSousCat = $_POST['SousCategorie']; #Array
-        $tableType = $_POST['Type'];    #Array
-        $Adresse = $_POST['Adresse']; #string
+    if (!isset($_POST['Recherche'])){
+        global $page,$Erreur,$msg_erreur;
+        $page = 'Erreur';
+        $msg_erreur = "Désolé, il semble qu'une erreur est apparue lors de la récupération du formulaire de recherche";
+        $Erreur = '$_POST["Recherche"]'. 'non défini';
+        return ;
     }
-    $req = 'SELECT Distance';
+    if ( !isset($_POST['Type']) or !isset($_POST['SousCategorie']) or !isset($_POST['Categorie']) ){
+        return "Aucun résultat (peut être que vous n'avez sélectionné aucun type d'équipement ?)";
+    }
+
+    $Adresse = $_POST['Adresse'];  #string
+    $Adresse = str_replace(' ','+',$Adresse);                       #On recupère le premier résultat
+    $url = 'https://api-adresse.data.gouv.fr/search/?q='.$Adresse.'&limit=1'; 
+    $data = ExecAPI($url);
+    if (count($data['features']) == 0 ){
+        return "Désolé, il semble qu'aucun lieu de corresponde à votre adresse";
+    }
+    $X = $data['features'][0]['properties']['x'];
+    $Y = $data['features'][0]['properties']['y'];
+    $context = $data['features'][0]['properties']['context']; #string CodeDepartement, Departement, Region 
+    $listcontext = (explode(',',$context)); #Liste du string
+    $region =  trim(end($listcontext),' '); #Prend region et enleve premier espace
+    
+    $CategoriesCheck = [
+        'IdCategorie'      => $_POST['Categorie'], #Array
+        'IdSousCategorie'  => $_POST['SousCategorie'],
+        'IdType'           => $_POST['Type'] 
+        ] ; 
+    $CategorieCheck32 = [];
+    foreach ($CategoriesCheck as $key => $value) {
+        
+    }
+
+    $Distance = "DistanceXY(UTMX, $X ,UTMY, $Y )";
+    $req = "SELECT $Distance as Distance , LibType FROM equipement";
+    $req.= " INNER JOIN commune USING(CodeCommune)";
+    $req.= " INNER JOIN departement USING(CodeDepartement)";
+    $req.= " INNER JOIN region USING(CodeRegion)";
+    $req.= " INNER JOIN coordonnees USING(IdLocalisation)";
+    $req.= " INNER JOIN type USING(IdType)";
+    $req.= " INNER JOIN souscategorie USING(IdSousCategorie)";
+    $req.= " INNER JOIN categorie USING(categorie)";
+    $req.= " WHERE LibRegion = '$region' $Distance < 10000";
+
+    foreach ($CategoriesCheck['IdType'] as $Type) {
+        $Type32 = base_convert($Type,10,32);
+    }
+    $req.= "ORDER BY $Distance ASC;";
+    echo $req;
 }
-ResultSearch();
+// ResultSearch();
+
+echo substr('abcd',1,2);
+
 
 // Fonction str_contains pas présent dans php 7
-if (!function_exists('str_contains')) {
-    function str_contains(string $haystack, string $needle): bool
-    {
-        return '' === $needle || false !== strpos($haystack, $needle);
-    }
+function str_contains(string $haystack, string $needle): bool
+{
+    return '' === $needle || false !== strpos($haystack, $needle);
 }
 
 // MYSQL
@@ -125,13 +170,11 @@ function Categories($id,$Lib,$foreign,$table){
     }
 }
 // Affichage des pages
-
 $Categories =  [
     'Categorie'     => Categories('IdCategorie','LibCategorie','None','Categorie'),
     'SousCategorie' => Categories('IdSousCategorie','LibSousCategorie','IdCategorie','SousCategorie'),
     'Type'          => Categories('IdType','LibType','IdSousCategorie','Type')
 ];
-
 
 $ext = '.html.twig';
 

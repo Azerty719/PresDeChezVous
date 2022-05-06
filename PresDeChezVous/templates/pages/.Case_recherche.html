@@ -10,23 +10,21 @@
                 <form action="../PresDeChezVous/?p=Recherche" method="POST">
                     {% for ligneCat in Categorie %}
                     <li>
-                        {{CheckboxCat('Categorie[]',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
+                        {{CheckboxCat('Categorie',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
                         <ul>
                             {% for ligneSousCat in SousCategorie %}
                             {% if ligneSousCat['IdCategorie'] == ligneCat['IdCategorie'] %}
                             <li>
-                                {{CheckboxCat('SousCategorie[]',ligneSousCat['IdSousCategorie'],ligneSousCat['LibSousCategorie'])}}
+                                {{CheckboxCat('SousCategorie',ligneSousCat['IdSousCategorie'],ligneSousCat['LibSousCategorie'])}}
 
                                 <ul class="Type">
                                     {% for ligneType in Type %}
 
                                     {% if ligneType['IdSousCategorie'] == ligneSousCat['IdSousCategorie'] %}
                                     <li>
-                                        {{CheckboxType('Type[]',ligneType['IdType'],ligneType['LibType'])}}
+                                        {{CheckboxType('Type',ligneType['IdType'],ligneType['LibType'])}}
                                     </li>
                                     {% endif %}
-
-
                                     {% endfor %}
                                 </ul>
                             </li>
@@ -34,13 +32,12 @@
                             {% endfor %}
                         </ul>
                     </li>
-                    {% endfor %}
-                    
+                    {% endfor %} 
                 </ul>
             </li>
         </ul>
 
-        <div class="barreRecherchePrincipal"><input name ='Adresse' type="search" placeholder="Saisissez une ville, une adresse...">
+        <div class="barreRecherchePrincipal"><input name ='Adresse' type="search" autocomplete="address-level4" placeholder="Saisissez une ville, une adresse..." pattern="(.|\s)*\S(.|\s)*" required>
         </div>
         <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
     </div>
