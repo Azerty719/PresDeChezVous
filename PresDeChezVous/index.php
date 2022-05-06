@@ -94,6 +94,7 @@ function ResultSearch(){
     }
     $req.= "ORDER BY $Distance ASC;";
     echo $req;
+    sifvezui
 }
 // ResultSearch();
 
