@@ -1,27 +1,45 @@
-{% from ".macro.twig" import BoutonLink,CheckboxCat %}
+{% from ".macro.twig" import BoutonLink,CheckboxCat,CheckboxType %}
 
-{% block style %}
-<link rel="stylesheet" href="../PresDeChezVous/templates/style/CaseRecherche.css">
-<link rel="stylesheet" href="../PresDeChezVous/templates/style/Deroulant_recherche.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
 
-{% endblock %}
-
 <div class="caseRecherche">
     <div class="barreRecherche">
-        <div class="menuDeroulant">
-            <nav> <ul> <li class="deroulant"><button class="LibBouton"> Catégories &#11206; </button> </a>
-                        <ul class="sous">
-                            <form method="POST">
-                                {% for ligneCat in Categorie %}
-                                {{CheckboxCat('Categorie[]',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
-                                </ul>                    
-                                {% endfor %}
+
+        <ul class="Deroulant">
+            <li> <button class="LibBouton"> Catégories &#11206; </button>
+                <ul id="Menu">
+                <form action="../PresDeChezVous/?p=Recherche" method="POST">
+                    {% for ligneCat in Categorie %}
+                    <li>
+                        {{CheckboxCat('Categorie',ligneCat['IdCategorie'],ligneCat['LibCategorie'])}}
+                        <ul>
+                            {% for ligneSousCat in SousCategorie %}
+                            {% if ligneSousCat['IdCategorie'] == ligneCat['IdCategorie'] %}
+                            <li>
+                                {{CheckboxCat('SousCategorie',ligneSousCat['IdSousCategorie'],ligneSousCat['LibSousCategorie'])}}
+
+                                <ul class="Type">
+                                    {% for ligneType in Type %}
+
+                                    {% if ligneType['IdSousCategorie'] == ligneSousCat['IdSousCategorie'] %}
+                                    <li>
+                                        {{CheckboxType('Type',ligneType['IdType'],ligneType['LibType'])}}
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
                         </ul>
-            </li> </ul> </nav>
-        </div>
+                    </li>
+                    {% endfor %} 
+                </ul>
+            </li>
+        </ul>
+
         <div>
             <input name="cp" id="cp" type="text" placeholder="Code postal">
             <input name="ville" id="ville" type="text" placeholder="Ville">
@@ -93,15 +111,16 @@
                         });
                     }
                 });
-                </script>
+            </script>
         </div>
-        <div class="boutonRecherchePrincipal"><button> &#128269; </button></div>
+
+        <div class="boutonRecherchePrincipal"><button> &#128269; </button> </div>
     </div>
     <div class="boutonValider">
-        <button type="submit" name="Categories">Valider</button>
+        <button type="submit" name="Recherche">Valider</button>
     </div>
 
     </form>
-</div>
 
-{{Recherche}}
+    {# </form> #}
+</div>
